@@ -1,0 +1,31 @@
+/ Sample providers data
+const providers = [
+  {
+    provider_id: 1,
+    first_name: 'Alice',
+    last_name: 'Johnson',
+    provider_specialty: 'Cardiology',
+  },
+  {
+    provider_id: 2,
+    first_name: 'Bob',
+    last_name: 'Williams',
+    provider_specialty: 'Dermatology',
+  },
+];
+
+// GET endpoint to retrieve all providers
+app.get('/providers', (req, res) => {
+  const providerList = providers.map(({ first_name, last_name, provider_specialty }) => ({
+    first_name,
+    last_name,
+    provider_specialty,
+  }));
+  res.json(providerList);
+});
+
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
